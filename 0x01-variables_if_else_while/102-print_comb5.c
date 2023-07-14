@@ -16,22 +16,20 @@ int main(void)
 		{
 			for (k = i; k < 10; k++)
 			{
-				for (l = j; l < 10; l++)
-				{
-					if (i != k || j != l)
+				l = j;
+				do {
+					putchar((i % 10) + '0');
+					putchar((j % 10) + '0');
+					putchar(' ');
+					putchar((k % 10) + '0');
+					putchar((l % 10) + '0');
+					if (i != 9 || j != 8)
 					{
-						putchar((i % 10) + '0');
-						putchar((j % 10) + '0');
+						putchar(',');
 						putchar(' ');
-						putchar((k % 10) + '0');
-						putchar((l % 10) + '0');
-						if (i != 9 || j != 8)
-						{
-							putchar(',');
-							putchar(' ');
-						}
 					}
-				}
+					l++;
+				} while (l < 10 && i + k != j + l);
 			}
 		}
 	}
