@@ -18,15 +18,18 @@ int main(void)
 			{
 				for (l = j; l < 10; l++)
 				{
-					putchar((i % 10) + '0');
-					putchar((j % 10) + '0');
-					putchar(' ');
-					putchar((k % 10) + '0');
-					putchar((l % 10) + '0');
-					if (i != 9 || j != 8)
+					if i (!= k && j != l)
 					{
-						putchar(',');
+						putchar((i % 10) + '0');
+						putchar((j % 10) + '0');
 						putchar(' ');
+						putchar((k % 10) + '0');
+						putchar((l % 10) + '0');
+						if (i != 9 || j != 8)
+						{
+							putchar(',');
+							putchar(' ');
+						}
 					}
 				}
 			}
