@@ -29,7 +29,7 @@ int main(void)
 						putchar(' ');
 					}
 					l++;
-				} while (l < 10 && (i != k || j != l));
+				} while (l < 10 && (i != k && j != l));
 			}
 		}
 	}
