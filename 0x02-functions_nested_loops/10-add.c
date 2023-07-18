@@ -5,7 +5,7 @@
  *add - add 2 integers
  *
  *@a: first int
- *@b second int
+ *@b: second int
  *
  *Return: sum
  */
