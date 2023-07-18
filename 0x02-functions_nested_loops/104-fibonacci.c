@@ -9,14 +9,14 @@ int main(void)
 {
 	int count;
 	unsigned long fibo_0 = 0, fibo_1= 1, sum;
-	unsigned long fib_half_1, fib_half_2, fib1_half_1 fib1_half_2;
+	unsigned long fib_half_1, fib_half_2, fib1_half_1, fib1_half_2;
 	unsigned long half, half1;
 
 	for (count = 0; count < 92; count++)
 	{
 		sum = fibo_0 + fibo_1;
 		printf("%lu, ", sum);
-		fibo_o = fibo_1;
+		fibo_0 = fibo_1;
 		fibo_1 = sum;
 	}
 	fib_half_1 = fibo_0 / 10000000000;
