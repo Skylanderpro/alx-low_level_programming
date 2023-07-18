@@ -7,11 +7,10 @@
  *Return: absolute value
  */
 
-int _abs(int)
+int _abs(int n)
 {
-	int c, d;
+	int d;
 
-	_abs(c);
-	d = int abs(c);
+	d = int abs(n);
 	return (d);
 }
