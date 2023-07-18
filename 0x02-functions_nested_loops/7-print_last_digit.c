@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  *print_last_digit - find last digit of a number
@@ -15,6 +16,6 @@ int print_last_digit(int n)
 
 	n = abs(n);
 	j = n % 10;
-	_putchar(j + '0');
+	printf(j);
 	return (j);
 }
