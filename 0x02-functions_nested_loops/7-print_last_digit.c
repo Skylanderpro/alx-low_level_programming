@@ -1,17 +1,20 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
  *print_last_digit - find last digit of a number
  *
  *@n: the number argument
  *
- *Return: the last digit
+ *Return: 0
  */
 
 int print_last_digit(int n)
 {
 	int j;
 
+	n = abs(n);
 	j = n % 10;
-	return (j);
+	_putchar(j + '0');
+	return (0);
 }
