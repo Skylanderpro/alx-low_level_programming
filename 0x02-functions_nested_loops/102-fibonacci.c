@@ -5,18 +5,17 @@
  *
  *Return: Always 0 (success)
  */
-int fibo(int n)
-{
-	if (n <= 1)
-		return n;
-	return fibo(n-1) + fibo(n-2);
-}
 int main(void)
 {
-	int n = 50;
+	int i;
+	long int a = 1, b = 2, result;
 
-	for (int i = 0; i < n; i++)
-		printf("%d, ", fibo(i));
-
+	for (i = 0; i < 50; i++)
+	{
+		printf("%ld, ", a);
+		result = a + b;
+		a = b;
+		b = result;
+	}
 	return (0);
 }
