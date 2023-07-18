@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo git add .
+sudo git commit -m "Functions and nested loops"
+sudo git push
