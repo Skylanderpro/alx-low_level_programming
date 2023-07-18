@@ -12,7 +12,10 @@ int main(void)
 
 	for (i = 0; i < 50; i++)
 	{
-		printf("%ld, ", a);
+		while (i != 49)
+			printf("%ld, ", a);
+		if (i == 49)
+			printf("%ld\n", a);
 		result = a + b;
 		a = b;
 		b = result;
