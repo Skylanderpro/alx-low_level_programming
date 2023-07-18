@@ -4,6 +4,8 @@
 /**
  *_abs - returns absolute value
  *
+ *@n: the argument to convert to absolute
+ *
  *Return: absolute value
  */
 
