@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo git add .
+sudo git commit -m "debugging in c"
+sudo git push
