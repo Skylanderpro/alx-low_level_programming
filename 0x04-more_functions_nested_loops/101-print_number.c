@@ -6,7 +6,7 @@
  */
 void print_number(int n)
 {
-	int reverse, digit;;
+	int reverse, digit;
 
 	if (n == 0)
 	{
