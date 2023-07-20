@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
  *print_number - prints a number
@@ -6,23 +6,25 @@
  */
 void print_number(int n)
 {
+	int reverse, digit;;
+
 	if (n == 0)
 	{
-		putchar('0');
+		_putchar('0');
 		return;
 	}
 
 	if (n < 0)
 	{
-		putchar('-');
+		_putchar('-');
 		n = -n;
 	}
 
-	int reverse = 0;
+	reverse = 0;
 
 	while (n != 0)
 	{
-		int digit = n % 10;
+		digit = n % 10;
 
 		reverse = reverse * 10 + digit;
 		n /= 10;
@@ -30,10 +32,9 @@ void print_number(int n)
 
 	while (reverse != 0)
 	{
-		int digit = reverse % 10;
+		digit = reverse % 10;
 
 		_putchar(digit + '0');
 		reverse /= 10;
 	}
 }
-
