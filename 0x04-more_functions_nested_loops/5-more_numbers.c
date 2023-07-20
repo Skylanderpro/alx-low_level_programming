@@ -6,16 +6,18 @@
 
 void more_numbers(void)
 {
-	int i;
+	int i, j;
 
-	i = 0;
-
-	while (i < 15)
+	for (j = 0; j < 10; j++)
 	{
-		if (i >= 10)
-			_putchar((i / 10) + '0');
-		_putchar((i % 10) + '0');
-		i++;
+		i = 0;
+		while (i < 15)
+		{
+			if (i >= 10)
+				_putchar((i / 10) + '0');
+			_putchar((i % 10) + '0');
+			i++;
+		}
+		_putchar('\n');
 	}
-	_putchar('\n');
 }
