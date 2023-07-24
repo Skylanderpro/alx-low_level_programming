@@ -7,5 +7,13 @@
 
 void print_rev(char *s)
 {
-	puts(strrev(s));
+	int h, l;
+	char *k;
+
+	h = strlen(s);
+	for (l = 0; l <= h; l++)
+	{
+		*k[l] = *s[h];
+	}
+	puts(k);
 }
