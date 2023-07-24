@@ -17,7 +17,7 @@ void rev_string(char *s)
 	{
 		coun--;
 		reverse = s[j];
-		s[i] = s[coun];
+		s[j] = s[coun];
 		s[coun] = reverse;
 	}
 }
