@@ -11,7 +11,7 @@ void print_rev(char *s)
 	char *k;
 
 	h = strlen(s);
-	k [h] = " ";
+	*k[h] = " ";
 	for (l = 0; l <= h; l++)
 	{
 		k[l] = s[h];
