@@ -13,7 +13,7 @@ void print_rev(char *s)
 	h = strlen(s);
 	for (l = 0; l <= h; l++)
 	{
-		*k[l] = *s[h];
+		k[l] = s[h];
 	}
 	puts(k);
 }
