@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+void rev_string(char *s);
 void print_rev(char *s);
 void _puts(char *str);
 void swap_int(int *a, int *b);
