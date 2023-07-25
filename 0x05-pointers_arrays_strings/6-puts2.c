@@ -14,7 +14,7 @@ void puts2(char *str)
 
 	while (*j != '\0')
 	{
-		y++;
+		j++;
 		lon++;
 	}
 	h = lon - 1;
