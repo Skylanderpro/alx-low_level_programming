@@ -35,5 +35,5 @@ int find_sqrt(int n, int start, int end)
 		return (mid); /*natural squareroot found*/
 	if (mid * mid > n)
 		return (find_sqrt(n, start, mid - 1)); /*searching in the lower half*/
-	return find_sqrt((n, mid + 1, end)); /* seaching in upper half*/
+	return (find_sqrt(n, mid + 1, end)); /* seaching in upper half*/
 }
