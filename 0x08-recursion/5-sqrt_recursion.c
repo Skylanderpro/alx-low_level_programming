@@ -1,6 +1,6 @@
 #include "main.h"
 
-long int find_sqrt(long int n, long int start, long int end);
+int find_sqrt(int n, int start, int end);
 /**
  *_sqrt_recursion - returns the square root
  *@n: number whose sqrt is returned
@@ -12,7 +12,7 @@ int _sqrt_recursion(int n)
 {
 	if (n < 0)
 		return (-1);
-	return find_sqrt(n, 0, n);
+	return (find_sqrt(n, 0, n / 2 + 1));
 }
 
 /**
@@ -23,17 +23,17 @@ int _sqrt_recursion(int n)
  *Return: the natural sqrt of n
  */
 
-long int find_sqrt(long int n, long int start, long int end)
+int find_sqrt(int n, int start, int end)
 {
-	long int mid;
+	int mid;
 
 	if (start > end)
 		return (-1);
-	mid = (start + end) / 2;
+	mid = start + (end - start) / 2;
 
 	if (mid * mid == n)
-		return mid; /*natural squareroot found*/
+		return (mid); /*natural squareroot found*/
 	if (mid * mid > n)
-		return find_sqrt(n, start, mid - 1); /*searching in the lower half*/
-	return find_sqrt(n, mid + 1, end); /* seaching in upper half*/
+		return (find_sqrt(n, start, mid - 1)); /*searching in the lower half*/
+	return find_sqrt((n, mid + 1, end)); /* seaching in upper half*/
 }
