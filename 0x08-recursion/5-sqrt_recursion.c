@@ -25,9 +25,11 @@ int _sqrt_recursion(int n)
 
 int find_sqrt(int n, int start, int end)
 {
+	int mid;
+
 	if (start > end)
 		return (-1);
-	int mid = (start + end) / 2;
+	mid = (start + end) / 2;
 
 	if (mid * mid == n)
 		return mid; /*natural squareroot found*/
