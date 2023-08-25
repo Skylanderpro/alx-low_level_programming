@@ -12,28 +12,21 @@ int _sqrt_recursion(int n)
 {
 	if (n < 0)
 		return (-1);
-	return (find_sqrt(n, 0, n / 2 + 1));
+	return (find_sqrt(n, n / 2));
 }
 
 /**
  *find_sqrt - second function that finds the squareroot using recursion
  *@n: the input number
- *@start: the starting point for finding the sqrt
- *@end: the ending point for the search
+ *@guess: the guess for the square root number
  *Return: the natural sqrt of n
  */
 
-int find_sqrt(int n, int start, int end)
+int find_sqrt(int n, int guess)
 {
-	int mid;
+	int new_guess = (guess + n / guess) / 2;
 
-	if (start > end)
-		return (-1);
-	mid = start + (end - start) / 2;
-
-	if (mid * mid == n)
-		return (mid); /*natural squareroot found*/
-	if (mid * mid > n)
-		return (find_sqrt(n, start, mid - 1)); /*searching in the lower half*/
-	return (find_sqrt(n, mid + 1, end)); /* seaching in upper half*/
+	if (new_guess == guess || new_guess > n / new_guess)
+		return (guess); /*the best approximation*/
+	return (find_sqrt(n, new_guess));
 }
