@@ -20,7 +20,7 @@ int _sqrt_raphson( int n, int guess)
  *@n: the input number
  *Return: the natural square root of n
  */
-int _sqrt_newton(int n)
+int _sqrt_recursion(int n)
 {
 	if (n < 0)
 		return (-1);/* Negative numbers don't have square roots.*/
