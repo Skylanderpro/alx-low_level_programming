@@ -24,10 +24,12 @@ int _sqrt_recursion(int n)
  */
 int sqrt_helper(int n, int start, int end)
 {
+	int mid;
+
 	if (start > end)
 		return end; /*Return the closest floor value of the square root.*/
 
-	int mid = start + (end - start) / 2;
+	mid = start + (end - start) / 2;
 	int square = mid * mid;
 
 	if (square == n)
