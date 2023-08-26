@@ -25,7 +25,7 @@ int prime_finder(int b, int k)
 {
 	if (b == 1)
 		return (1);
-	if (n % k == 0 && k > 0)
+	if (b % k == 0 && k > 0)
 		return (0);
-	return (actual_prime(b, k - 1));
+	return (prime_finder(b, k - 1));
 }
