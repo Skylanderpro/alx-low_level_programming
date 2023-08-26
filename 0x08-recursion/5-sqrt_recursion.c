@@ -1,45 +1,30 @@
 #include "main.h"
-
-int sqrt_helper(int n, int start, int end);
-
 /**
- * _sqrt_recursion - Returns the natural square root of a number.
- * @n: The input number.
- * Return: The natural square root of n, or -1 if not found.
+ *_sqrt_raphson - uses the Newton-Raphson method in approximating the square root of numbers
+ *@n: the input number
+ *@guess: the first approximation to the sqrt of n
+ *Return: the natural square root of n
  */
-int _sqrt_recursion(int n)
+int _sqrt_raphson( int n, int guess)
+{
+	int new_guess;
+
+	new_guess = (guess + n / guess) / 2;
+
+	if (new_guess == guess || new_guess > n / new_guess)
+		return (guess); /*best approximation reached*/
+	return (_sqrt_raphson(n, new_guess));
+}
+/**
+ *_sqrt_recursion - Wrapper function for the Newton-Raphson square root calculation
+ *@n: the input number
+ *Return: the natural square root of n
+ */
+int _sqrt_newton(int n)
 {
 	if (n < 0)
-		return (-1); /* Negative number doesn't have a natural square root.*/
-
-	if (n == 9 || n == 1)
-		return (n);
-	return sqrt_helper(n, 0, n / 2 + 1);
-}
-
-/**
- * sqrt_helper - Recursive helper function to find the square root.
- * @n: The input number.
- * @start: The starting point for the search.
- * @end: The ending point for the search.
- * Return: The natural square root of n.
- */
-int sqrt_helper(int n, int start, int end)
-{
-	int mid;
-	int square;
-
-	if (start > end)
-		return end; /*Return the closest floor value of the square root.*/
-
-	mid = start + (end - start) / 2;
-	square = mid * mid;
-
-	if (square == n)
-		return mid; /* Found the square root.*/
-
-	if (square > n || square < 0)
-		return sqrt_helper(n, start, mid - 1); /* Search in the lower half.*/
-
-	return sqrt_helper(n, mid + 1, end); /* Search in the upper half.*/
+		return (-1);/* Negative numbers don't have square roots.*/
+	if (n == 0 || n == 1)
+		return (n);/* Square root of 0 and 1 is itself*/
+	return (_sqrt_raphson(n, n / 2)); /* start the approximation with the initial guess of n / 2*/
 }
