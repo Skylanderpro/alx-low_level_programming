@@ -1,32 +1,37 @@
-#include "main.h"
-
-int find_sqrt(int n, int guess);
 /**
- *_sqrt_recursion - returns the square root
- *@n: number whose sqrt is returned
- *
- *Return: the natural sqrt or -1 if not found
+ * _sqrt_recursion - Returns the natural square root of a number.
+ * @n: The input number.
+ * Return: The natural square root of n, or -1 if not found.
  */
-
 int _sqrt_recursion(int n)
 {
 	if (n < 0)
-		return (-1);
-	return (find_sqrt(n, n / 2));
+		return -1; // Negative number doesn't have a natural square root.
+
+	return sqrt_helper(n, 0, n);
 }
 
 /**
- *find_sqrt - second function that finds the squareroot using recursion
- *@n: the input number
- *@guess: the guess for the square root number
- *Return: the natural sqrt of n
+ * sqrt_helper - Recursive helper function to find the square root.
+ * @n: The input number.
+ * @start: The starting point for the search.
+ * @end: The ending point for the search.
+ * Return: The natural square root of n.
  */
-
-int find_sqrt(int n, int guess)
+int sqrt_helper(int n, int start, int end)
 {
-	int new_guess = (guess + n / guess) / 2;
+	if (start > end)
+		return end; // Return the closest floor value of the square root.
 
-	if (new_guess == guess || new_guess > n / new_guess)
-		return (guess); /*the best approximation*/
-	return (find_sqrt(n, new_guess));
+	int mid = start + (end - start) / 2;
+	int square = mid * mid;
+
+
+	if (square == n)
+		return mid; // Found the square root.
+
+	if (square > n)
+		return sqrt_helper(n, start, mid - 1); // Search in the lower half.
+
+	return sqrt_helper(n, mid + 1, end); // Search in the upper half.
 }
