@@ -1,20 +1,13 @@
-#include "main.h"
-
+#include <stdio.h>
 /**
- *main - returns the number of arguments to it
- *@argc: the number of arguments to main
- *@argv: the array to arguments to c
+ *main - prints number of arguments to main
+ *@argc: number of arguments to main
+ *@argv: array storing arguments to main
  *Return: Always 0 (success)
  */
 int main(int argc, char *argv[])
 {
-	int i;
-
-	i = 0;
-	while (i < argc)
-	{
-		printf("%s\n", argv[i]);
-		i++;
-	}
-	return (0);
+	printf("%d\n", argc - 1); /* Subtract 1 to exclude the program name itself*/
+	return 0;
 }
+
