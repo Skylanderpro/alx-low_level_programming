@@ -10,9 +10,11 @@ int sqrt_helper(int n, int start, int end);
 int _sqrt_recursion(int n)
 {
 	if (n < 0)
-		return -1; /* Negative number doesn't have a natural square root.*/
+		return (-1); /* Negative number doesn't have a natural square root.*/
 
-	return sqrt_helper(n, 0, n);
+	if (n == 9 || n == 1)
+		return (n);
+	return sqrt_helper(n, 0, n / 2 + 1);
 }
 
 /**
@@ -36,7 +38,7 @@ int sqrt_helper(int n, int start, int end)
 	if (square == n)
 		return mid; /* Found the square root.*/
 
-	if (square > n)
+	if (square > n || square < 0)
 		return sqrt_helper(n, start, mid - 1); /* Search in the lower half.*/
 
 	return sqrt_helper(n, mid + 1, end); /* Search in the upper half.*/
