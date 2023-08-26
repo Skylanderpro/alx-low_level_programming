@@ -6,7 +6,7 @@
 int _sqrt_recursion(int n)
 {
 	if (n < 0)
-		return -1; // Negative number doesn't have a natural square root.
+		return -1; /* Negative number doesn't have a natural square root.*/
 
 	return sqrt_helper(n, 0, n);
 }
@@ -21,17 +21,16 @@ int _sqrt_recursion(int n)
 int sqrt_helper(int n, int start, int end)
 {
 	if (start > end)
-		return end; // Return the closest floor value of the square root.
+		return end; /*Return the closest floor value of the square root.*/
 
 	int mid = start + (end - start) / 2;
 	int square = mid * mid;
 
-
 	if (square == n)
-		return mid; // Found the square root.
+		return mid; /* Found the square root.*/
 
 	if (square > n)
-		return sqrt_helper(n, start, mid - 1); // Search in the lower half.
+		return sqrt_helper(n, start, mid - 1); /* Search in the lower half.*/
 
-	return sqrt_helper(n, mid + 1, end); // Search in the upper half.
+	return sqrt_helper(n, mid + 1, end); /* Search in the upper half.*/
 }
