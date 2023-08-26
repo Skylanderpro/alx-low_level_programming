@@ -1,30 +1,26 @@
 #include "main.h"
 /**
- *_sqrt_raphson - uses the Newton-Raphson method in approximating the square root of numbers
- *@n: the input number
- *@guess: the first approximation to the sqrt of n
- *Return: the natural square root of n
+ *_sqrt - finds square root of numbers
+ *@n: number argument to find sqrt for
+ *@root: the value to use for approximations
+ *Return: natural square root or -1
  */
-int _sqrt_raphson( int n, int guess)
+int _sqrt(int n, int root)
 {
-	int new_guess;
-
-	new_guess = (guess + n / guess) / 2;
-
-	if (new_guess == guess || new_guess > n / new_guess)
-		return (guess); /*best approximation reached*/
-	return (_sqrt_raphson(n, new_guess));
+	if (root * root > n)
+		return (-1); /*accounts for numbers without natural square root*/
+	if (root * root == n)
+		return (root); /*The square root is found*/
+	return (_sqrt(n, root + 1));
 }
 /**
- *_sqrt_recursion - Wrapper function for the Newton-Raphson square root calculation
- *@n: the input number
- *Return: the natural square root of n
+ *_sqrt_recursion - uses _sqrt to return square root of numbers
+ *@n: the number whose sqrt is to be computed
+ *Return: square root or -1 if not found
  */
 int _sqrt_recursion(int n)
 {
 	if (n < 0)
-		return (-1);/* Negative numbers don't have square roots.*/
-	if (n == 0 || n == 1)
-		return (n);/* Square root of 0 and 1 is itself*/
-	return (_sqrt_raphson(n, n / 2)); /* start the approximation with the initial guess of n / 2*/
+		return (-1);/*There is no sqrt of -ve numbers*/
+	return (_sqrt(n, 0));
 }
