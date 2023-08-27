@@ -10,7 +10,7 @@
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-i	void *new_ptr;
+	void *new_ptr;
 	unsigned int i, copy_size;
 
 	if (ptr == NULL)
