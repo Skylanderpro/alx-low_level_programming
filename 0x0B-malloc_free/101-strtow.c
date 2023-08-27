@@ -104,7 +104,7 @@ char **strtow(char *str)
 		}
 	}
 
-	words[word_index] = NULL; // Set the last element to NULL
+	words[word_index] = NULL; /*Set the last element to NULL*/
 
 	return (words);
 }
