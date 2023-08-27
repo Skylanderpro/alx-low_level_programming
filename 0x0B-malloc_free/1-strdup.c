@@ -15,7 +15,10 @@ char *_strdup(char *str)
 		return (NULL);
 
 	if (duplicate == NULL)
+	{
+		printf("failed to allocate memory\n");
 		return (NULL);
+	}
 
 	strcpy(duplicate, str);
 
