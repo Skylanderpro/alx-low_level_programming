@@ -46,6 +46,7 @@ char *argstostr(int ac, char **av)
 
 	result[position - 1] = '\0'; /* Replace the last newline
 					with null terminator*/
+	result[position++] = '\n';
 
 	return result;
 }
