@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- *
- *
- *
- *
+ *argstostr - arguments alignment
+ *@ac: number of arguments
+ *@av: pointer to arguments
+ *Return: pointer to the arguments or NULL
  */
 
 char *argstostr(int ac, char **av)
@@ -43,10 +43,6 @@ char *argstostr(int ac, char **av)
 		position += strlen(av[i]);
 		result[position++] = '\n';				
 	}
-
-	result[position - 1] = '\0'; /* Replace the last newline
-					with null terminator*/
-	putchar('\n');
 
 	return result;
 }
