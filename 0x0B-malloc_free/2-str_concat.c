@@ -14,7 +14,7 @@ char *str_concat(char *s1, char *s2)
 	if (s1 == NULL)
 		s1 = "";
 	if (s2 == NULL)
-		s2 == "";
+		s2 = "";
 	size_t total_length = strlen(s1) + strlen(s2) + 1;
 
 	concatenated = (char *)malloc(total_length);
