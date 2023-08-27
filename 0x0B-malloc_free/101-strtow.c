@@ -48,10 +48,9 @@ char **strtow(char *str)
 {
 	int num_words, i, j, word_index, start, length;
 	char **words;
+
 	if (str == NULL || *str == '\0' || count_words(str) == 0)
-	{
 		return (NULL);
-	}
 
 	num_words = count_words(str);
 	words = (char **)malloc((num_words + 1) * sizeof(char *));
@@ -68,30 +67,23 @@ char **strtow(char *str)
 	{
 		/*Skip leading whitespaces*/
 		while (is_whitespace(str[i]))
-		{
 			i++;
-		}
-
 		if (str[i] != '\0') /*Non-whitespace character found*/
 		{
 			start = i;
 			/*Find the end of the word*/
 			while (str[i] != '\0' && !is_whitespace(str[i]))
-			{
 				i++;
-			}
 
 			length = i - start;
 			/*Allocate memory for the word and copy it*/
 			words[word_index] = (char *)malloc((length + 1) * sizeof(char));
-            
+
 			if (words[word_index] == NULL)
 			{
 				/*Free memory for previously allocated words*/
 				for (j = 0; j < word_index; j++)
-				{
 					free(words[j]);
-				}
 				free(words);
 				return (NULL);
 			}
