@@ -20,9 +20,7 @@ char *_strdup(char *str)
 	duplicate = (char *)malloc(strlen(str) + 1);
 
 	if (duplicate == NULL)
-	{
 		return (NULL);
-	}
 
 	strcpy(duplicate, str);
 
