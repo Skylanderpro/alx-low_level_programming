@@ -2,7 +2,7 @@
 /**
  *main - prints its name
  *@argc: the number of command line args to main
- *@argv[]: string to store all arguments to main
+ *@argv: string to store all arguments to main
  *
  *Return: 0
  */
