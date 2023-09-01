@@ -2,11 +2,11 @@
 #include <ctype.h>
 #include <stdlib.h>
 /**
- *main - adds arguments to it
- *@argc: the number of arguments to main
- *@argv: the string storing the arguments to main
+ * main - Adds positive numbers.
+ * @argc: The number of arguments to main.
+ * @argv: The string storing the arguments to main.
  *
- *Return: 1 for error and 0 o.w
+ * Return: 0 for success, 1 for error.
  */
 int main(int argc, char *argv[])
 {
@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
 		printf("%d\n", 0);
 		return (0);
 	}
+
 	for (i = 1; i < argc; i++)
 	{
 		if (!isdigit(argv[i][0]) || atoi(argv[i]) <= 0)
@@ -25,11 +26,13 @@ int main(int argc, char *argv[])
 			return (1);
 		}
 	}
+
 	for (j = 1; j < argc; j++)
 	{
 		k = atoi(argv[j]);
 		sum += k;
 	}
+
 	printf("%d\n", sum);
 	return (0);
 }
