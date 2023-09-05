@@ -8,9 +8,9 @@
  */
 int countWords(char *str)
 {
-	int i, wordCount = 0;
+	int wordCount = 0;
 
-	for (i = 0; str[i]; i++)
+	for (int i = 0; str[i]; i++)
 	{
 		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
 		{
@@ -31,7 +31,9 @@ char **allocateWordsArray(int count)
 	char **words = (char **)malloc((count + 1) * sizeof(char *));
 
 	if (words == NULL)
+	{
 		return (NULL);
+	}
 	return (words);
 }
 
@@ -44,18 +46,17 @@ char **allocateWordsArray(int count)
  */
 char **splitAndCopyWords(char *str, int count)
 {
-	char **words;
+	char **words = allocateWordsArray(count);
 	char *token;
 	int i;
 
-	words = allocateWordsArray(count);
 	if (words == NULL)
 		return (NULL);
 
 	token = strtok(str, " ");
 	i = 0;
 
-	while (token != NULL)
+	while (i < count && token != NULL)
 	{
 		int len = strlen(token);
 
@@ -66,26 +67,29 @@ char **splitAndCopyWords(char *str, int count)
 			return (NULL);
 		}
 		strcpy(words[i], token);
-		token = strtok(NULL, " ");
+i		token = strtok(NULL, " ");
 		i++;
+	}
+
+	if (i < count)
+	{
+		freeWordsArray(words);
+		return (NULL);
 	}
 
 	return (words);
 }
-
 /**
  * freeWordsArray - Free memory allocated for an array of strings.
  * @words: The array of strings to be freed.
  */
 void freeWordsArray(char **words)
 {
-	int i;
-
 	if (words == NULL)
 	{
 		return;
 	}
-	for (i = 0; words[i] != NULL; i++)
+	for (int i = 0; words[i] != NULL; i++)
 	{
 		free(words[i]);
 	}
@@ -100,21 +104,24 @@ void freeWordsArray(char **words)
  */
 char **strtow(char *str)
 {
-	int wordCount;
-	char **words;
-
 	if (str == NULL || *str == '\0')
+	{
 		return (NULL);
+	}
 
-	wordCount = countWords(str);
+	int wordCount = countWords(str);
 
 	if (wordCount == 0)
+	{
 		return (NULL);
+	}
 
-	words = splitAndCopyWords(str, wordCount);
+	char **words = splitAndCopyWords(str, wordCount);
 
 	if (words == NULL)
+	{
 		return (NULL);
+	}
 
 	words[wordCount] = NULL;
 
