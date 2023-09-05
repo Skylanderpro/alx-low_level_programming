@@ -8,9 +8,9 @@
  */
 int countWords(char *str)
 {
-	int wordCount = 0;
+	int i, wordCount = 0;
 
-	for (int i = 0; str[i]; i++)
+	for (i = 0; str[i]; i++)
 	{
 		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
 		{
