@@ -107,6 +107,7 @@ void freeWordsArray(char **words)
 char **strtow(char *str)
 {
 	int wordCount;
+	char **words;
 
 	if (str == NULL || *str == '\0')
 	{
@@ -120,7 +121,7 @@ char **strtow(char *str)
 		return (NULL);
 	}
 
-	char **words = splitAndCopyWords(str, wordCount);
+	words = splitAndCopyWords(str, wordCount);
 
 	if (words == NULL)
 	{
