@@ -8,9 +8,9 @@
  */
 int countWords(char *str)
 {
-	int wordCount = 0;
+	int i, wordCount = 0;
 
-	for (int i = 0; str[i]; i++)
+	for (i = 0; str[i]; i++)
 	{
 		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
 		{
@@ -67,7 +67,7 @@ char **splitAndCopyWords(char *str, int count)
 			return (NULL);
 		}
 		strcpy(words[i], token);
-i		token = strtok(NULL, " ");
+		token = strtok(NULL, " ");
 		i++;
 	}
 
@@ -85,11 +85,13 @@ i		token = strtok(NULL, " ");
  */
 void freeWordsArray(char **words)
 {
+	int i;
+
 	if (words == NULL)
 	{
 		return;
 	}
-	for (int i = 0; words[i] != NULL; i++)
+	for (i = 0; words[i] != NULL; i++)
 	{
 		free(words[i]);
 	}
@@ -104,12 +106,14 @@ void freeWordsArray(char **words)
  */
 char **strtow(char *str)
 {
+	int wordCount;
+
 	if (str == NULL || *str == '\0')
 	{
 		return (NULL);
 	}
 
-	int wordCount = countWords(str);
+	wordCount = countWords(str);
 
 	if (wordCount == 0)
 	{
