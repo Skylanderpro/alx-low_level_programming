@@ -55,7 +55,7 @@ char **splitIntoWords(const char *str, int wordCount)
 {
 	int i, j;
 	char *copy, *token;
-	char **words = (char **)malloc((wordCount + 1) * sizeof(char *));
+	char **words = (char **)malloc((wordCount) * sizeof(char *));
 
 	if (words == NULL)
 	{
