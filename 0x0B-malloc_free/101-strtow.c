@@ -1,60 +1,122 @@
 #include "main.h"
 
 /**
- * strtow - Splits a string into words.
+ * countWords - Count the number of words in a string.
  * @str: The input string.
  *
- * Return: An array of strings containing the words from str.
+ * Return: The number of words in the string.
  */
-char **strtow(char *str)
+int countWords(char *str)
 {
-	if (str == NULL || *str == '\0')
-		return (NULL);
+	int wordCount = 0;
 
-	int i, j, k, wordCount = 0, len;
-	char **words = NULL;
-	char *token;
-
-	for (i = 0; str[i]; i++)
+	for (int i = 0; str[i]; i++)
 	{
 		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
+		{
 			wordCount++;
+		}
 	}
+	return (wordCount);
+}
 
-	if (wordCount == 0)
+/**
+ * allocateWordsArray - Allocate memory for an array of strings.
+ * @count: The number of strings to allocate space for.
+ *
+ * Return: A pointer to the allocated array.
+ */
+char **allocateWordsArray(int count)
+{
+	char **words = (char **)malloc((count + 1) * sizeof(char *));
+
+	if (words == NULL)
 		return (NULL);
+	return (words);
+}
 
-	words = (char **)malloc((wordCount + 1) * sizeof(char *));
+/**
+ * splitAndCopyWords - Split a string into words and copy them into an array.
+ * @str: The input string.
+ * @count: The number of words in the string.
+ *
+ * Return: A pointer to the array of words.
+ */
+char **splitAndCopyWords(char *str, int count)
+{
+	char **words;
+	char *token;
+	int i;
+
+	words = allocateWordsArray(count);
 	if (words == NULL)
 		return (NULL);
 
 	token = strtok(str, " ");
-	for (i = 0; i < wordCount; i++)
-	{
-		if (token == NULL)
-		{
-			for (j = 0; j < i; j++)
-				free(words[j]);
-			free(words);
-			return (NULL);
-		}
+	i = 0;
 
-		len = strlen(token);
+	while (token != NULL)
+	{
+		int len = strlen(token);
+
 		words[i] = (char *)malloc((len + 1) * sizeof(char));
 		if (words[i] == NULL)
 		{
-			for (k = 0; k < i; k++)
-				free(words[k]);
-			free(words);
+			freeWordsArray(words);
 			return (NULL);
 		}
-
 		strcpy(words[i], token);
 		token = strtok(NULL, " ");
+		i++;
 	}
+
+	return (words);
+}
+
+/**
+ * freeWordsArray - Free memory allocated for an array of strings.
+ * @words: The array of strings to be freed.
+ */
+void freeWordsArray(char **words)
+{
+	int i;
+
+	if (words == NULL)
+	{
+		return;
+	}
+	for (i = 0; words[i] != NULL; i++)
+	{
+		free(words[i]);
+	}
+	free(words);
+}
+
+/**
+ * strtow - Split a string into words.
+ * @str: The input string.
+ *
+ * Return: A pointer to an array of strings (words), or NULL on failure.
+ */
+char **strtow(char *str)
+{
+	int wordCount;
+	char **words;
+
+	if (str == NULL || *str == '\0')
+		return (NULL);
+
+	wordCount = countWords(str);
+
+	if (wordCount == 0)
+		return (NULL);
+
+	words = splitAndCopyWords(str, wordCount);
+
+	if (words == NULL)
+		return (NULL);
 
 	words[wordCount] = NULL;
 
 	return (words);
 }
-
