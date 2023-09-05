@@ -1,134 +1,114 @@
 #include "main.h"
+/**
+ * strtow - Splits a string into words.
+ * @str: The input string to split.
+ *
+ * This function splits the input string into words separated by spaces
+ * and returns an array of strings.
+ *
+ * Return: A pointer to an array of strings (words), or NULL on failure.
+ */
+char **strtow(char *str);
 
 /**
- * countWords - Count the number of words in a string.
- * @str: The input string.
+ * countWords - Counts the number of words in a string.
+ * @str: The input string to count words in.
+ *
+ * This function counts the number of words in the inpt
+ * string based on spaces.
  *
  * Return: The number of words in the string.
  */
-int countWords(char *str)
+int countWords(const char *str)
 {
-	int i, wordCount = 0;
+	int i, count = 0, isWord = 0;
 
-	for (i = 0; str[i]; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
+		if (str[i] != ' ')
 		{
-			wordCount++;
+			if (!isWord)
+			{
+				count++;
+				isWord = 1;
+			}
+		}
+		else
+		{
+			isWord = 0;
 		}
 	}
-	return (wordCount);
+
+	return (count);
 }
 
 /**
- * allocateWordsArray - Allocate memory for an array of strings.
- * @count: The number of strings to allocate space for.
+ * splitIntoWords - Splits a string into an array of words.
+ * @str: The input string to split into words.
+ * @wordCount: The number of words in the input string.
  *
- * Return: A pointer to the allocated array.
+ * This function splits the input string into an array of words and returns it.
+ *
+ * Return: A pointer to an array of strings (words), or NULL on failure.
  */
-char **allocateWordsArray(int count)
+char **splitIntoWords(const char *str, int wordCount)
 {
-	char **words = (char **)malloc((count + 1) * sizeof(char *));
+	int i, j;
+	char *copy, *token;
+	char **words = (char **)malloc((wordCount + 1) * sizeof(char *));
 
 	if (words == NULL)
 	{
 		return (NULL);
 	}
-	return (words);
-}
 
-/**
- * splitAndCopyWords - Split a string into words and copy them into an array.
- * @str: The input string.
- * @count: The number of words in the string.
- *
- * Return: A pointer to the array of words.
- */
-char **splitAndCopyWords(char *str, int count)
-{
-	char **words = allocateWordsArray(count);
-	char *token;
-	int i;
+	copy = strdup(str);
+	token = strtok(copy, " ");
 
-	if (words == NULL)
-		return (NULL);
-
-	token = strtok(str, " ");
-	i = 0;
-
-	while (i < count && token != NULL)
+	for (i = 0; i < wordCount; i++)
 	{
-		int len = strlen(token);
-
-		words[i] = (char *)malloc((len + 1) * sizeof(char));
+		words[i] = strdup(token);
 		if (words[i] == NULL)
 		{
-			freeWordsArray(words);
+			for (j = 0; j < i; j++)
+			{
+				free(words[j]);
+			}
+			free(words);
+			free(copy);
 			return (NULL);
 		}
-		strcpy(words[i], token);
 		token = strtok(NULL, " ");
-		i++;
 	}
-
-	if (i < count)
-	{
-		freeWordsArray(words);
-		return (NULL);
-	}
+	free(copy);
+	words[wordCount] = NULL;
 
 	return (words);
 }
-/**
- * freeWordsArray - Free memory allocated for an array of strings.
- * @words: The array of strings to be freed.
- */
-void freeWordsArray(char **words)
-{
-	int i;
-
-	if (words == NULL)
-	{
-		return;
-	}
-	for (i = 0; words[i] != NULL; i++)
-	{
-		free(words[i]);
-	}
-	free(words);
-}
 
 /**
- * strtow - Split a string into words.
- * @str: The input string.
+ * strtow - Splits a string into words.
+ * @str: The input string to split.
+ *
+ * This function splits the input string into words separated by spaces
+ * and returns an array of strings.
  *
  * Return: A pointer to an array of strings (words), or NULL on failure.
  */
 char **strtow(char *str)
 {
 	int wordCount;
-	char **words;
 
-	if (str == NULL || *str == '\0')
+	if (str == NULL || strcmp(str, "") == 0)
 	{
 		return (NULL);
 	}
 
 	wordCount = countWords(str);
-
 	if (wordCount == 0)
 	{
 		return (NULL);
 	}
 
-	words = splitAndCopyWords(str, wordCount);
-
-	if (words == NULL)
-	{
-		return (NULL);
-	}
-
-	words[wordCount] = NULL;
-
-	return (words);
+	return (splitIntoWords(str, wordCount));
 }
