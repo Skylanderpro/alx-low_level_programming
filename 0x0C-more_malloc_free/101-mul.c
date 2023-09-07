@@ -29,7 +29,7 @@ int is_positive_integer(const char *str)
 int main(int argc, char *argv[])
 {
 	char *num1_str, *num2_str;
-	unsigned long long num1, num2, result;
+	unsigned long num1, num2, result;
 
 	if (argc != 3)
 	{
@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 
 	result = num1 * num2;
 
-	printf("%llu\n", result);
+	printf("%lu\n", result);
 
 	return (0);
 }
