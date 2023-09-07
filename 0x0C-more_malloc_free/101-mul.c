@@ -1,35 +1,17 @@
 #include "main.h"
 
+int is_positive_integer(const char *str);
 /**
- * is_positive_integer - Checks if a string contains only positive integers
- * @str: The input string to check
+ *main - calculates product
+ *@argc: number of arguments to main
+ *@argv: the pointer to the arguments to main
  *
- * Return: 1 if all characters are digits, 0 otherwise
- */
-int is_positive_integer(const char *str)
-{
-	while (*str)
-	{
-		if (!isdigit(*str))
-		{
-			return (0);
-		}
-		str++;
-	}
-	return (1);
-}
-
-/**
- * main - Entry point of the program
- * @argc: The number of command-line arguments
- * @argv: An array of strings containing the arguments
- *
- * Return: 0 on success, 98 on error
+ *Return: 98 for error and product o.w
  */
 int main(int argc, char *argv[])
 {
+	unsigned int num1, num2, result;
 	char *num1_str, *num2_str;
-	unsigned long num1, num2, result;
 
 	if (argc != 3)
 	{
@@ -46,12 +28,30 @@ int main(int argc, char *argv[])
 		return (98);
 	}
 
-	num1 = strtoull(num1_str, NULL, 10);
-	num2 = strtoull(num2_str, NULL, 10);
+	num1 = atoi(num1_str);
+	num2 = atoi(num2_str);
 
 	result = num1 * num2;
 
-	printf("%lu\n", result);
+	printf("%u\n", result);
 
 	return (0);
+}
+/**
+ *is_positive_integer - checks for positive integer
+ *@str: the string to check if value is int or not
+ *
+ *Return: 1 for success and 0 o.w
+ */
+int is_positive_integer(const char *str)
+{
+	while (*str)
+	{
+		if (!isdigit(*str))
+		{
+			return (0);
+		}
+		str++;
+	}
+	return (1);
 }
