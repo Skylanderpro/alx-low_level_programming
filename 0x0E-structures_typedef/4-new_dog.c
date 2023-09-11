@@ -15,25 +15,27 @@
  *
  * Return: A pointer to the new dog, or NULL if memory allocation fails.
  */
-dog_t *new_dog(char *name, float age, char *owner) {
+dog_t *new_dog(char *name, float age, char *owner)
+{
 	dog_t *newDog;
 
 	/* Allocate memory for the new dog */
 	newDog = malloc(sizeof(dog_t));
-	if (newDog == NULL) {
+	if (newDog == NULL)
 		return (NULL); /* Return NULL if memory allocation fails */
-	}
 
 	/* Make a copy of the name string */
 	newDog->name = strdup(name);
-	if (newDog->name == NULL) {
-		free(newDog); / Free the newDog structure
+	if (newDog->name == NULL)
+	{
+		free(newDog); /* Free the newDog structure*/
 		return (NULL);
 	}
 
 	/* Make a copy of the owner string */
 	newDog->owner = strdup(owner);
-	if (newDog->owner == NULL) {
+	if (newDog->owner == NULL)
+	{
 		free(newDog->name); /* Free the name string*/
 		free(newDog); /*Free the newDog structure*/
 		return (NULL);
