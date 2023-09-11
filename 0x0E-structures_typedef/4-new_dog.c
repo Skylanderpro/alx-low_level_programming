@@ -11,7 +11,7 @@
  *
  * Description: This function creates a new dog and stores its name,
  * age, and owner's name.
- * It makes copies of the name and owner strings.
+ * It makes copies of the name and owner strings
  *
  * Return: A pointer to the new dog, or NULL if memory allocation fails.
  */
@@ -37,7 +37,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (newDog->owner == NULL)
 	{
 		free(newDog->name); /* Free the name string*/
-		free(newDog); /*Free the newDog structure*/
+		free(newDog); /* Free the newDog structure*/
 		return (NULL);
 	}
 
