@@ -11,7 +11,8 @@
  * it prints "(nil)" for that element.
  * If the struct itself is NULL, it does nothing.
  */
-void print_dog(struct dog *d) {
+void print_dog(struct dog *d)
+{
 	if (d != NULL)
 	{
 		printf("Name: %s\n", d->name != NULL ? d->name : "(nil)");
