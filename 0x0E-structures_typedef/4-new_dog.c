@@ -28,12 +28,14 @@ dog_t *new_dog(char *name, float age, char *owner)
 
 	/* Make copies of the name and owner strings */
 	newDog->name = strdup(name);
-	newDog->owner = strdup(owner);
-
-	if (newDog->name == NULL || newDog->owner == NULL)
+	if (newDog->name == NULL)
 	{
-		/* Memory allocation for name or owner failed */
-		free(newDog->name);
+		free(newDog);
+		return (NULL);		
+	}
+	newDog->owner = strdup(owner);
+	if (newDog->owner == NULL)
+	{
 		free(newDog->owner);
 		free(newDog);
 		return (NULL);
