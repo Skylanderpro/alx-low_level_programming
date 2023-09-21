@@ -1,4 +1,4 @@
-#include “variadic_functions.h”
+#include "variadic_functions.h"
 
 /**
  * print_all - Print anything based on the provided format.
@@ -21,7 +21,7 @@ void print_all(const char * const format, ...)
 	{
 		if (*ptr == 'c')
 		{
-			char_arg = va_arg(args, int); // 'char' is promoted to 'int' in variadic functions
+			char_arg = va_arg(args, int);
 			printf("%c", char_arg);
 		}
 		else if (*ptr == 'i')
@@ -31,7 +31,7 @@ void print_all(const char * const format, ...)
 		}
 		else if (*ptr == 'f')
 		{
-			float_arg = va_arg(args, double); // 'float' is promoted to 'double' in variadic functions
+			float_arg = va_arg(args, double);
 			printf("%f", float_arg);
 		}
 		else if (*ptr == 's')
