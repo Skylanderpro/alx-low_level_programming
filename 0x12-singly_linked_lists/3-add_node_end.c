@@ -10,27 +10,39 @@
  *
  * Return: Address of the new element, or (NULL) if it failed
  */
-list_t *add_node_end(list_t **head, const char *str) {
+list_t *add_node_end(list_t **head, const char *str)
+{
 	list_t *new_node = (list_t *)malloc(sizeof(list_t));
-	if (new_node == NULL) {
+	int str_length;
+
+	if (new_node == NULL)
+	{
 		fprintf(stderr, "Memory allocation failed.\n");
 		return (NULL);
 	}
 
 	new_node->str = strdup(str);
-	if (new_node->str == NULL) {
+	if (new_node->str == NULL)
+	{
 		fprintf(stderr, "Memory allocation failed for string duplication.\n");
 		free(new_node);
 		return (NULL);
 	}
 
+	str_length = strlen(str);
+	new_node->len = str_length;
+
 	new_node->next = NULL;
 
-	if (*head == NULL) {
+	if (*head == NULL)
+	{
 		*head = new_node;
-	} else {
+	} else
+	{
 		list_t *current = *head;
-		while (current->next != NULL) {
+
+		while (current->next != NULL)
+		{
 			current = current->next;
 		}
 		current->next = new_node;
@@ -38,3 +50,4 @@ list_t *add_node_end(list_t **head, const char *str) {
 
 	return (new_node);
 }
+
