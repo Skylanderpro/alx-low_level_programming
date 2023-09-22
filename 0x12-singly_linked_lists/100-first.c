@@ -6,7 +6,6 @@
  * This function is marked with __attribute__((constructor)),
  * ensuring it is executed before main.
  */
-void print_message() __attribute__((constructor));
 
 void print_message()
 {
