@@ -5,22 +5,25 @@
  */
 void print_binary(unsigned long int n)
 {
-	int leading_zero = 1, bits = sizeof(n) * 8, i;
-	unsigned long int mask;
+	int i, bits = sizeof(n) * 8;
+	int leading_zero = 1;
+	unsigned long int mask = 1UL << (bits - 1);
 	char bit;
 
-	for (i = bits - 1; i >= 0; i--)
+	for (i = 0; i < bits; i++)
 	{
-		mask = 1UL << i;
 		bit = (n & mask) ? '1' : '0';
 
 		if (bit == '1')
 			leading_zero = 0;
 
 		if (!leading_zero)
-			printf("%c", bit);
+			putchar(bit);
+
+		mask >>= 1;
 	}
 
 	if (leading_zero)
-		printf("0");
+		putchar('0');
+
 }
