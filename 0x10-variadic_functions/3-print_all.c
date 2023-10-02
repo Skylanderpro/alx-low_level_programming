@@ -19,25 +19,31 @@ void print_all(const char * const format, ...)
 		{
 			case 'c':
 				char_arg = va_arg(args, int);
-				printf("%s%c", (print_separator ? ", " : ""), char_arg);
+				printf("%s%c", (print_separator ? ", " : ""),
+						char_arg);
 				print_separator = 1;
 				break;
 			case 'i':
 				int_arg = va_arg(args, int);
-				printf("%s%d", (print_separator ? ", " : ""), int_arg);
+				printf("%s%d", (print_separator ? ", " : ""),
+						int_arg);
 				print_separator = 1;
 				break;
 			case 'f':
 				float_arg = va_arg(args, double);
-				printf("%s%f", (print_separator ? ", " : ""), float_arg);
+				printf("%s%f", (print_separator ? ", " : ""),
+						float_arg);
 				print_separator = 1;
 				break;
 			case 's':
 				str_arg = va_arg(args, char *);
 				if (str_arg == NULL)
-					printf("%s(nil)", (print_separator ? ", " : ""));
+					printf("%s(nil)", (print_separator
+							     ? ", " : ""));
 				else
-					printf("%s%s", (print_separator ? ", " : ""), str_arg);
+					printf("%s%s",
+							(print_separator? ", "
+							 : ""),str_arg);
 				print_separator = 1;
 				break;
 			default:
